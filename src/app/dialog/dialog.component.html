@@ -1,0 +1,29 @@
+<div class="container">
+  <h1 mat-dialog-title>{{editMode ? 'Edit item' : 'Add item'}}</h1>
+</div>
+<div mat-dialog-content>
+  <form class="form" #myForm="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Station</mat-label>
+      <input matInput ngModel name="Station" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>IP Address</mat-label>
+      <input matInput ngModel name="IP_Address" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Location</mat-label>
+      <input matInput ngModel name="Location" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Used for</mat-label>
+      <input matInput ngModel name="Used_for" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>ATE SW</mat-label>
+      <input matInput ngModel name="ATE_SW" required>
+    </mat-form-field>
+    <button [disabled]="!myForm.valid" mat-dialog-close mat-raised-button color="primary" class="add-button"
+            type="submit" (click)="onSubmit()">{{editMode ? 'Edit' : 'Add'}}</button>
+  </form>
+</div>

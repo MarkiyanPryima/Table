@@ -1,0 +1,56 @@
+<div class="mat-elevation-z8 data-table">
+  <mat-form-field class="filter">
+    <input matInput type="text" (keyup)="doFilter($event.target)" placeholder="Filter">
+  </mat-form-field>
+    <button class="add-button" mat-button color="primary" (click)="addItem()">Add item</button>
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+
+    <ng-container matColumnDef="Station">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Station</th>
+      <td mat-cell *matCellDef="let row">{{row.Station}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="IP_Address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>IP Address</th>
+      <td mat-cell *matCellDef="let row">{{row.IP_Address}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Location">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+      <td mat-cell *matCellDef="let row">{{row.Location}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Used_for">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Used for</th>
+      <td mat-cell *matCellDef="let row">{{row.Used_for}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="ATE_SW">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ATE SW</th>
+      <td mat-cell *matCellDef="let row">{{row.ATE_SW}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="icons">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" (click)="onEdit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="onDelete(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+                 [length]="dataSource?.data?.length"
+                 [pageIndex]="0"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 aria-label="Select page">
+  </mat-paginator>
+</div>
